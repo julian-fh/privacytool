@@ -19,17 +19,19 @@ public class FacebookCrawler implements Crawler
 
         //FacebookClient facebookClient = new DefaultFacebookClient(accessToken.getAccessToken(), Version.VERSION_2_2);
         //FacebookClient facebookClient = new DefaultFacebookClient(secrets.SoerenApiKey, Version.VERSION_2_2);
-        FacebookClient facebookClient = new DefaultFacebookClient(secrets.JulianApiKey, Version.VERSION_2_2);
+        FacebookClient facebookClient = new DefaultFacebookClient(accessToken.getAccessToken(), Version.VERSION_2_2);
 
-        Connection<User> publicSearch = facebookClient.fetchConnection("search", User.class,
-                Parameter.with("q", "Julian Frielinghaus"), Parameter.with("type", "user"));
+        //Connection<User> publicSearch = facebookClient.fetchConnection("search", User.class,
+        //Parameter.with("q", "Julian Frielinghaus"), Parameter.with("type", "user"));
 
-        System.out.println(publicSearch.getData().toString());
+        //System.out.println(publicSearch.getData().toString());
         System.out.println();
 
-        User searchedUser = facebookClient.fetchObject("me", User.class);
+        User searchedUser = facebookClient.fetchObject(secrets.JulianFacebookID, User.class);
 
         System.out.println(searchedUser);
+
+
 
     }
 
